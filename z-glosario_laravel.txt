@@ -1,0 +1,81 @@
+PREFORMATEAR UN PARAMETRO DE RUTAS DE MANERA GLOBAL
+// app/Providers/RouteServiceProviders.php -> determino el formato predeterminado para un parametro de manera global (sirve para todas las rutas)
+public function boot()
+{
+    Route::pattern('id', '[0-9]+');
+}
+
+-----
+
+COMANDO PARA ALMACENAR LAS RUTAS DE MI PROYCTO EN CACHE
+// php artisan route:cache // corriendo este comando en la terminal almaceno en cache los archivos de rutas (sirve en produccion) (para actualizar cambios en web.php vuelvo a correr el mismo comando)
+// php artisan route:clear // revertimos los cambios que genera el comando anterior (conviene en desarrollo)
+
+-----
+
+CREAR UN CONTROLADOR
+php artisan make:controller PostController
+
+-----
+
+LISTAR POR CONSOLA TODAS LAS RUTAS DEL PROYECTO (PROPIAS Y DE LARAVEL)
+php artisan r:l 
+
+-----
+
+LISTAR POR CONSOLA TODAS LAS RUTAS DEL PROYECTO (PROPIAS A LAS QUE HAYAMOS LLAMADO "posts")
+php artisan r:l --name=posts
+
+-----
+
+COMANDO PARA CREAR LAS 7 RUTAS STANDARD DE UN CRUD (CON EL COMANDO ANTERIOR VERIFICAMOS LOS NOMBRES STANDARIZADOS QUE DEBEMOS DARLE A LOS METODOS DEL CONTROLADOR QUE SE EJECUTEN SEGUN CADA RUTA)
+Route::resource('gaseosas', PostController::class);
+
+-----
+
+FORMA DE DECIRLE  LARAVEL QUE RUTAS DEL CRUD QUIERO QUE GENERE (EN ESTE CASO SOLO INDEX Y SHOW)
+Route::resource('gaseosas', PostController::class)->only(['index', 'show']);
+
+-----
+
+FORMA DE EXCLUIR UNA (O MAS) RUTA/S DE LAS 7 POR DEFECTO DEL CRUD (EN ESTE CASO DESTROY)
+Route::resource('gaseosas', PostController::class)->except(['destroy']);
+
+-----
+
+CODIGO PARA GENERAR LAS 5 RUTAS QUE NECESITO PARA UNA API (NO HACEN FALTA LOS FORMS DE CREACION Y EDICION)
+Route::apiResource('posts', PostController::class);
+
+-----
+
+HELPERS
+https://laravel.com/docs/9.x/helpers#main-content
+
+-----
+
+npm run dev -> comando para que funcione un proyecto Laravel con Tailwind (Seccion 9 - Video 49) 
+
+-----
+
+419 | PAGE EXPIRED -> Ataques XSRF o CSRF (Cross Site Request Forgery)
+Para prevenir este tipo de ataques usamos la directiva de Laravel @csrf dentro del form desde el que el cliente va a enviar informacion al servidor
+@csrf -> esta directiva agrega al form el siguiente input oculto con un token en el value
+<input type="hidden" name="_token" value="IKsCKTjZsgeRAA1xmdEOXgjSNsxBqkGfjdxF9eH9">
+Así se previenen ataques CSRF (investigar)
+
+-----
+
+Convencion de Laravel Resource Controller (https://laravel.com/docs/9.x/controllers#main-content)
+
+-----
+
+Route::get('/register', [RegisterController::class, 'index'])->name('register'); => el metodo name() recibe un string como parametro, que quedara registrado como el alias de todas las URL ascociadas (en este caso /register)
+
+-----
+
+{{ route('register') }} -> route == helper de Laravel
+
+-----
+
+dd($arg) -> dd method imprime lo que le pasemos como argunmento y detiene l ejecucion de Laravel (ya no ejecuta las sigueintes lineas, como un return)
+https://laravel.com/docs/9.x/collections#method-dd
