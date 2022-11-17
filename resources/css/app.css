@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (min-width: 768px) {
+    .md\:flex {
+        display: flex;
+    }
+    /* .md-flex {
+        display: flex;
+    } */
+}
+.w-1\/2 {
+    width: 50%;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem/* 8px */;
+}

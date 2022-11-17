@@ -1,0 +1,37 @@
+TUVE QUE USAR ESTE COMANDO PARA CREAR EL PROYECTO. EL DE SIEMPRE TIRABA ERROR
+composer create-project --prefer-dist laravel/laravel devstagram
+
+PARA CREAR EN LA DB LAS TABLAS EN app/database/migrations
+php artisan migrate
+
+REVIERTE UNA MIGRACION
+php artisan migrate:rollback
+
+cashier -> paquete de Laravel para recibir pagos en linea (por ejemplo para agregar pagos con PayPal)
+
+npm run dev -> comando para que funcione un proyecto Laravel con Tailwind (Seccion 9 - Video 49)
+
+-----
+
+419 | PAGE EXPIRED -> Ataques XSRF o CSRF (Cross Site Request Forgery)
+Para prevenir este tipo de ataques usamos la directiva de Laravel @csrf dentro del form desde el que el cliente va a enviar informacion al servidor
+@csrf -> esta directiva agrega al form el siguiente input oculto con un token en el value
+<input type="hidden" name="_token" value="IKsCKTjZsgeRAA1xmdEOXgjSNsxBqkGfjdxF9eH9">
+Así se previenen ataques CSRF (investigar)
+
+-----
+
+Convencion de Laravel Resource Controller (https://laravel.com/docs/9.x/controllers#main-content)
+
+-----
+
+Route::get('/register', [RegisterController::class, 'index'])->name('register'); => el metodo name() recibe un string como parametro, que quedara registrado como el alias de todas las URL ascociadas (en este caso /register)
+
+-----
+
+{{ route('register') }} -> route == helper de Laravel
+
+-----
+
+dd($arg) -> dd method imprime lo que le pasemos como argunmento y detiene l ejecucion de Laravel (ya no ejecuta las sigueintes lineas, como un return)
+https://laravel.com/docs/9.x/collections#method-dd
