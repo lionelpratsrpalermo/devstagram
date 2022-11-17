@@ -35,3 +35,24 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 
 dd($arg) -> dd method imprime lo que le pasemos como argunmento y detiene l ejecucion de Laravel (ya no ejecuta las sigueintes lineas, como un return)
 https://laravel.com/docs/9.x/collections#method-dd
+
+-----
+
+https://github.com/MarcoGomesr/laravel-validation-en-espanol/ -> Paquete de traducciones en español para Laravel
+
+https://github.com/laradevs/spanish -> Paquete de traducciones en español para Laravel
+
+(Seccion 10 - Video 61)
+
+-----
+
+available validations rules (validaciones disponibles)
+https://laravel.com/docs/9.x/validation#available-validation-rules
+
+-----
+17/11/22
+
+php artisan migrate -> correr una migracion
+php artisan migrate:rollback -> revertir la ultima migracion
+php artisan migrate:rollback --step=5 -> revertir la cantidad de migraciones que especifiquemos
+php artisan make:migration agregar_imagen_user 
